@@ -25,7 +25,7 @@ export class AppComponent {
   onServerUrlSet(value:string){
     this.serverUrl.set(value.trim());
     this.refreshUser.next();
-    sessionStorage.setItem('serverUrl',value);
+    sessionStorage.setItem('serverUrl',value.trim());
   }
 
   ngOnInit(){
