@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: server-app-deploy
+  name: server-app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-app-pod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: server-app-pod
+    spec:
+      containers:
+      - image: server-app
+        name: server-app
+        envFrom: 
+        - configMapRef:
+            name: db-configmap
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        resources: {}
+status: {}

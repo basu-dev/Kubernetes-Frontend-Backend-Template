@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: app-db-deploy
+  name: app-db-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-db-pod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-db-pod
+    spec:
+      containers:
+      - image: postgres
+        name: postgres
+        ports:
+        - containerPort: 5432
+        envFrom: 
+        - configMapRef:
+            name: db-configmap
+        volumeMounts:
+        - name: db-data
+          mountPath: /var/lib/postgresql/data
+        resources: {}
+      volumes:
+          - name: db-data
+            persistentVolumeClaim:
+              claimName: postgres-pvc
+status: {}

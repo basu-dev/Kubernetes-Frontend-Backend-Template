@@ -1,0 +1,1 @@
+ls | grep .yaml | xargs -I {} kubectl create -f {}

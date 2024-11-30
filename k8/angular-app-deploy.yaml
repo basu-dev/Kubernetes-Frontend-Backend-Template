@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: angular-app-deploy
+  name: angular-app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-pod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: angular-pod
+    spec:
+      containers:
+      - image: angular-app
+        name: angular-app
+        imagePullPolicy: Never
+        ports: 
+        - containerPort: 80
+        resources: {}
+status: {}

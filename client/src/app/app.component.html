@@ -1,0 +1,6 @@
+@if (serverUrl()) {
+<app-user-form (onSubmit)="submitForm($event)"/>
+<app-user-list [users]="users()"/>
+}@else{
+<app-server-url [url]="serverUrl()" (urlEmitted)="onServerUrlSet($event)"/>
+}

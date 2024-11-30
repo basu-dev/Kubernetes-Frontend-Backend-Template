@@ -1,0 +1,28 @@
+    <table>
+        <thead>
+<td>
+                Id
+            </td>
+<td>
+                Name
+            </td>
+<td>
+                Email
+            </td>
+            <td>
+                Created At
+            </td>
+        </thead>
+        <tbody>
+
+@for (user of users(); track user.id) {
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.created_at  | date}}</td>
+    </tr>
+  }
+        </tbody>
+
+    </table>

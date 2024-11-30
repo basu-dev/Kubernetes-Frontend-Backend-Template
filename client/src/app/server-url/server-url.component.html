@@ -1,0 +1,4 @@
+<label>Enter Server Url</label>
+<input [(ngModel)]="url" />
+
+<button (click)="urlEmitted.emit(url())" >Update</button>

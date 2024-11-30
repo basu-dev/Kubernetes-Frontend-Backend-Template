@@ -1,0 +1,19 @@
+
+<form [formGroup]="form" (submit)="onSubmit.emit(form)">
+    <h2>Add User</h2>
+    <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name">
+    </div>
+<div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email">
+    </div>
+<div>
+    
+    @if(form.invalid && form.touched){
+        Form is invalid
+    }
+<button>Submit</button>
+</div>
+</form>
